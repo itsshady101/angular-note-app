@@ -4,6 +4,52 @@
 	angular
 		.module("ngNotes")
 		.controller("notesCtrl", function($scope) {
-			$scope.name = "Note 1";
+			$scope.notes = [
+			{
+				"id": "1",
+				"title": "Create an programming language API.",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae alias doloribus consequuntur blanditiis animi nobis eaque temporibus eos, a accusamus vero quam architecto ullam impedit. Provident error quo, eum fugiat!",
+				"posted": "2016-08-03",
+				"categories": [
+					"Goals",
+					"PHP"
+				],
+				"image": "http://placekitten.com/g/400/400"
+			},
+			{
+				"id": "2",
+				"title": "Start working on web scraper which scrapes data.",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae alias doloribus consequuntur blanditiis animi nobis eaque temporibus eos, a accusamus vero quam architecto ullam impedit. Provident error quo, eum fugiat!",
+				"posted": "2016-08-01",
+				"categories": [
+					"Goals",
+					"Python"
+				],
+				"image": "http://placekitten.com/g/200/200"
+			},
+			{
+				"id": "3",
+				"title": "Design and code a css framework",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae alias doloribus consequuntur blanditiis animi nobis eaque temporibus eos, a accusamus vero quam architecto ullam impedit. Provident error quo, eum fugiat!",
+				"posted": "2016-06-07",
+				"categories": [
+					"Goals",
+					"CSS",
+					"Design"
+				],
+				"image": "http://placekitten.com/g/500/500"
+			},
+			{
+				"id": "4",
+				"title": "Start learning ionic",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae alias doloribus consequuntur blanditiis animi nobis eaque temporibus eos, a accusamus vero quam architecto ullam impedit. Provident error quo, eum fugiat!",
+				"posted": "2016-03-03",
+				"categories": [
+					"Angular-js",
+					"WannaBe"
+				],
+				"image": "http://placekitten.com/g/520/520"
+			}
+			];
 		});
 })();

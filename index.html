@@ -12,7 +12,6 @@
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<p><em>Note Go</em></p>
-
 			<md-button>
 				<md-icon class="mdi mdi-plus-circle"></md-icon>
 				Add Note
@@ -21,12 +20,14 @@
 	</md-toolbar>
 
 	<md-content class="md-padding" layout="row" layout-wrap>
-		<md-card flex="33">
-			<img src="http://placekitten.com/g/100/100" alt="" class="responsive">
+		<md-card ng-repeat="note in notes" flex="30">
+			<img ng-src="{{note.image}}" alt="" class="responsive">
 			<md-card-content>
 				<div class="note-info">
-					<h2 class="md-title">Note One</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur quaerat quae, recusandae voluptatibus dolore tempore asperiores accusamus cupiditate aliquam? Omnis inventore repellendus incidunt aliquid modi deleniti nulla, quas quidem mollitia?</p>
+					<h2 class="md-title">{{ note.title }}</h2>
+					<h4>{{ note.posted | date }}</h4>
+					<p>{{note.description}}</p>
+
 				</div>
 			</md-card-content>
 		</md-card>

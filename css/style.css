@@ -5,7 +5,12 @@ button .material-icons {
 	margin-top: 10px;
 }
 
+md-card > img, md-card > :not(md-card-content) img {
+	height: auto !important;
+}
+
+
 img.responsive {
-	width: auto;
-	height: 100%;
+	max-width: 100%;
+	height: auto;
 }
