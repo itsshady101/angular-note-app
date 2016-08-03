@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ngNotes</title>
+	<link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+	<link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="ngNotes" ng-controller="notesCtrl">
+	
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<p><em>Note Go</em></p>
+
+			<md-button>
+				<md-icon class="mdi mdi-plus-circle"></md-icon>
+				Add Note
+			</md-button>
+		</div>
+	</md-toolbar>
+
+	<md-content class="md-padding" layout="row" layout-wrap>
+		<md-card flex="33">
+			<img src="http://placekitten.com/g/100/100" alt="" class="responsive">
+			<md-card-content>
+				<div class="note-info">
+					<h2 class="md-title">Note One</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur quaerat quae, recusandae voluptatibus dolore tempore asperiores accusamus cupiditate aliquam? Omnis inventore repellendus incidunt aliquid modi deleniti nulla, quas quidem mollitia?</p>
+				</div>
+			</md-card-content>
+		</md-card>
+	</md-content>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.js"></script>
+	<script src="node_modules/angular-aria/angular-aria.js"></script>
+	<script src="node_modules/angular-material/angular-material.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/components/notes.ctr.js"></script>
+</body>
+</html>

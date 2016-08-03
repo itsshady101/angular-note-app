@@ -1,0 +1,11 @@
+body {
+	line-height: 1.9 !important; 
+}
+button .material-icons {
+	margin-top: 10px;
+}
+
+img.responsive {
+	width: auto;
+	height: 100%;
+}
