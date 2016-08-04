@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body ng-app="ngNotes" ng-controller="notesCtrl">
+<body ng-app="ngNotes" ng-controller="notesCtrl" ng-init="showEdit = false">
 	
 	<md-toolbar>
 		<div class="md-toolbar-tools">
@@ -27,8 +27,20 @@
 					<h2 class="md-title">{{ note.title }}</h2>
 					<h4>{{ note.posted | date }}</h4>
 					<p>{{note.description}}</p>
-
 				</div>
+				
+				<div layout="row">
+					<md-button ng-click="showEdit = !showEdit">Edit Note</md-button>
+				</div>
+
+				<div class="edit-note" ng-if="showEdit">
+					<h3>Edit</h3>
+					<div layout="row">
+						<md-button class="md-secondary">Edit</md-button>
+						<md-button class="md-warn">Delete</md-button>
+					</div>
+				</div>
+
 			</md-card-content>
 		</md-card>
 	</md-content>
