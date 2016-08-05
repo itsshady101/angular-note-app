@@ -12,15 +12,48 @@
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<p><em>Note Go</em></p>
-			<md-button>
+			<md-button ng-click="openSidebar()">
 				<md-icon class="mdi mdi-plus-circle"></md-icon>
 				Add Note
 			</md-button>
 		</div>
 	</md-toolbar>
 
+	<md-sidenav class="md-sidenav-left md-whiteframe-z3" md-component-id="left"
+	>
+		<md-toolbar>
+			<h1 class="md-toolbar-tools">Add a Classifieds</h1>
+		</md-toolbar>
+
+		<md-content layout-padding>
+			<form>
+				<md-input-container>
+					<label for="title">Title</label>
+					<input type="text" id="title"
+								md-autofocus  ng-model="note.title">
+				</md-input-container>
+				<md-input-container>
+					<label for="description">Description</label>
+					<textarea type="text" id="description" ng-model="note.description"></textarea>
+				</md-input-container>
+				<md-input-container>
+					<label for="image">Image Link</label>
+					<input type="text" id="image" ng-model="note.image">
+				</md-input-container>
+				<md-button class="md-primary" ng-click="saveNote(note)">
+					Save
+				</md-button>
+				<md-button class="warn" ng-click="closeSidebar()">
+					Cancel
+				</md-button>
+
+				<pre> {{  note | json }}</pre>
+			</form>
+		</md-content>
+	</md-sidenav>
+
 	<md-content class="md-padding" layout="row" layout-wrap>
-		<md-card ng-repeat="note in notes" flex="30">
+		<md-card ng-repeat="note in notes | orderBy: '-posted'" flex="30">
 			<img ng-src="{{note.image}}" alt="" class="responsive">
 			<md-card-content>
 				<div class="note-info">
