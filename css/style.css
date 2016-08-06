@@ -14,3 +14,21 @@ img.responsive {
 	max-width: 100%;
 	height: auto;
 }
+
+.note.ng-enter, .note.ng-move {
+	transition: 0.4s all;
+	opacity: 0;
+}
+
+.note.ng-enter.ng-enter-active, .note.ng-move.ng-move-active {
+	opacity: 1;
+}
+
+.note.ng-leave {
+	animation: 0.4s fade_note;
+}
+
+@keyframes fade_note {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}

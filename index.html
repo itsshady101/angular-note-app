@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body ng-app="ngNotes" ng-controller="notesCtrl" ng-init="showEdit = false">
+<body ng-app="ngNotes" ng-controller="notesCtrl" ng-init="showEdit = false; showFilter=false;">
 	
 	<md-toolbar>
 		<div class="md-toolbar-tools">
@@ -16,8 +16,31 @@
 				<md-icon class="mdi mdi-plus-circle"></md-icon>
 				Add Note
 			</md-button>
+
+			<md-button ng-click="showFilter = !showFilter">
+				<md-icon class="mdi mdi-magnify"></md-icon>
+				Filter
+			</md-button>
+			<div class="filters" layout="row" layout-align="" ng-show="showFilter" style="margin-top: 12px">
+				<md-input-container>
+					<input type="text" ng-model="notesFilter">
+				</md-input-container>	
+				<md-input-container>
+					<label>Category</label>
+					<!-- <md-select>
+						<md-option ng-repeat="category in categories" value="{{ category }}" ng-model>
+							{{ category }}
+						</md-option>
+					</md-select> -->
+				</md-input-container>
+			</div>
+
+
 		</div>
 	</md-toolbar>
+
+	
+
 
 	<md-sidenav class="md-sidenav-left md-whiteframe-z3" md-component-id="left"
 	>
@@ -40,8 +63,11 @@
 					<label for="image">Image Link</label>
 					<input type="text" id="image" ng-model="note.image">
 				</md-input-container>
-				<md-button class="md-primary" ng-click="saveNote(note)">
+				<md-button ng-if="!editing" class="md-primary" ng-click="saveNote(note)">
 					Save
+				</md-button>
+				<md-button class="md-primary" ng-if="editing" ng-click="saveEdit()">
+					Save Edit
 				</md-button>
 				<md-button class="warn" ng-click="closeSidebar()">
 					Cancel
@@ -53,7 +79,7 @@
 	</md-sidenav>
 
 	<md-content class="md-padding" layout="row" layout-wrap>
-		<md-card ng-repeat="note in notes | orderBy: '-posted'" flex="30">
+		<md-card ng-repeat="note in notes | orderBy: '- posted' | filter: notesFilter" flex="30" class="note">
 			<img ng-src="{{note.image}}" alt="" class="responsive">
 			<md-card-content>
 				<div class="note-info">
@@ -69,8 +95,8 @@
 				<div class="edit-note" ng-if="showEdit">
 					<h3>Edit</h3>
 					<div layout="row">
-						<md-button class="md-secondary">Edit</md-button>
-						<md-button class="md-warn">Delete</md-button>
+						<md-button class="md-secondary" ng-click="editNote(note)">Edit</md-button>
+						<md-button ng-click="deleteNote($event, note)" class="md-warn">Delete</md-button>
 					</div>
 				</div>
 
@@ -85,5 +111,6 @@
 	<script src="scripts/app.js"></script>
 	<script src="scripts/components/notes.ctr.js"></script>
 	<script src="scripts/components/notes.fac.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
 </body>
 </html>
